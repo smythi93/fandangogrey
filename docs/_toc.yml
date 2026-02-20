@@ -1,0 +1,42 @@
+format: jb-book
+root: Intro
+parts:
+  - caption: About Fandango
+    chapters:
+    - file: About
+    - file: ReleaseNotes
+    - file: FAQ
+    - file: Contributing
+  - caption: Fandango Tutorial
+    chapters:
+    - file: Tutorial
+    - file: Setup
+    - file: FirstSpec
+    - file: Invoking
+    - file: Fuzzing
+    - file: Strategies
+    - file: Constraints
+    - file: Shell
+    - file: Generators
+    - file: Regexes
+    - file: Recursive
+    - file: Paths
+    - file: ISO8601
+    - file: Parsing
+    - file: Binary
+    - file: Conversion
+    - file: Bits
+    - file: Gif
+#    - file: Distributions
+#    - file: Whitebox
+    - file: Hatching
+  - caption: Fandango Reference
+    chapters:
+    - file: Reference
+    - file: Installing
+    - file: Commands
+    - file: Language
+    - file: Stdlib
+    - file: DerivationTree
+    - file: PythonAPI
+    - file: Including

@@ -1,0 +1,45 @@
+# source: https://raw.githubusercontent.com/uo-se-research/slackline/refs/heads/master/target_apps/graphviz/grammars/parser-based.txt
+
+# implementation-based grammar for graphviz.
+# General notes: 
+# We only generate directed graphs.
+# We only implement singular IDs. An ID surrounded by quotations is not implemented. For more information see how <atom. is defined in the .y file
+# The grammar as it stands now allows many possible syntactically incorrect generations. 
+# in rule <node>, we removed the option "<atom> ':' <atom> ':' <port>" as this is specific to record like nodes that are not given in this grammar. 
+
+<start> ::= <input>{10}
+<input> ::= <graph>
+<graph> ::= <hdr> <body>; # removed the empty option as it just unrealistic to generate nothing!
+<body> ::= '{' <optstmtlist> '}';
+<hdr> ::= <optstrict> 'digraph' <optgraphname>;
+<optgraphname> ::= ' ' <atom> | '';
+<optstrict> ::= 'strict ' | '';
+<optstmtlist> ::= <stmtlist> | '';
+<stmtlist> ::= <stmtlist> <stmt>| <stmt>;
+<stmt> ::= <attrstmt> <optsemi> | <compound> <optsemi>;
+<optsemi> ::= ';' | '';
+<compound> ::= <simple> <rcompound> <optattr>;
+<simple> ::= <nodelist> | <subgraph>;
+<rcompound> ::= <edgeop> <simple> <rcompound> | '';
+<edgeop> ::= '->' | '';
+<nodelist> ::= <node> | <nodelist> ',' <node>;
+<node> ::= <atom> | <atom> ':' <port>;
+<port> ::= 'n' | 'ne' | 'e' | 'se' | 's' | 'sw' | 'w' | 'nw' | 'c' | '_';
+<attrstmt> ::= <attrtype> <optmacroname> <attrlist> | <graphattrdefs>;
+<attrtype> ::= 'graph' | 'node' | 'edge';
+<optmacroname> ::= ' ' <atom> '=' | '';
+<optattr> ::= <attrlist> | '';
+<attrlist> ::= <optattr> '[' <optattrdefs> ']';
+<optattrdefs> ::= <optattrdefs> <attrdefs> | '';
+<attrdefs> ::= <attritem> <optseparator>;
+<attritem> ::= <attrassignment> | <attrmacro>;
+<attrassignment> ::= <atom> '=' <atom>;
+<attrmacro> ::= '@' <atom>;
+<graphattrdefs> ::= <attrassignment>;
+<subgraph> ::= <optsubghdr> <body>;
+<optsubghdr> ::= 'subgraph ' <atom> | 'subgraph' | '';
+<optseparator> ::= ';' | ',' | '';
+<atom> ::= 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z' | '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '_';
+
+# where len(str(<start>)) <= 60
+maximizing len(set().union(*(DynamicAnalysis(str(inp)).CoveredBasicBlocks() for inp in <start>.children)))

@@ -1,0 +1,28 @@
+title: Graphviz (Heap Allocations)
+
+put: fcc/subjects/graphviz/graphviz-2.47.0/instrumentation/dot_static
+
+specifications:
+  - title: Execution Feedback
+    short-title: executionfeedback
+    plot-color: "#ff7f0e"
+    path: evaluation/execution_feedback/subjects/graphviz/specifications/graphviz-memory-0.fan
+
+  - title: Input Spec.
+    short-title: inputspec
+    plot-color: "#1f77b4"
+    path: evaluation/execution_feedback/subjects/graphviz/specifications/graphviz-memory-1.fan
+
+  - title: Input Spec. + Execution Feedback
+    short-title: inputspec_executionfeedback
+    plot-color: "#2ca02c"
+    path: evaluation/execution_feedback/subjects/graphviz/specifications/graphviz-memory-2.fan
+
+metric: 'trace.HeapAllocatedBytes()'
+aggregation: max
+repetitions: 10
+timelimit: 3600
+population-size: 1000
+y-label: Heap Allocated Bytes
+
+output-dir: experiment_output/

@@ -1,0 +1,29 @@
+title: lunasvg-svg2png (AFL)
+
+put: fcc/subjects/lunasvg/lunasvg/instrumentation/svg2png
+
+specifications:
+  - title: Execution Feedback
+    short-title: executionfeedback
+    plot-color: "#ff7f0e"
+    path: evaluation/execution_feedback/subjects/lunasvg/specifications/lunasvg-afl-0.fan
+
+  - title: Input Spec.
+    short-title: inputspec
+    plot-color: "#1f77b4"
+    path: evaluation/execution_feedback/subjects/lunasvg/specifications/lunasvg-afl-1.fan
+
+  - title: Input Spec. + Execution Feedback
+    short-title: inputspec_executionfeedback
+    plot-color: "#2ca02c"
+    path: evaluation/execution_feedback/subjects/lunasvg/specifications/lunasvg-afl-2.fan
+
+metric: 'trace.CoveredBasicBlocks()' # we compute cumulative coverage in replay.py
+aggregation: max
+repetitions: 10
+timelimit: 3600
+population-size: 10
+fitness-type: population
+y-label: Cumulative Basic Block Coverage
+
+output-dir: experiment_output/

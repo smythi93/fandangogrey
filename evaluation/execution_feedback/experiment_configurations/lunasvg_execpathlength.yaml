@@ -1,0 +1,28 @@
+title: lunasvg-svg2png (Execution Path Length)
+
+put: fcc/subjects/lunasvg/lunasvg/instrumentation/svg2png
+
+specifications:
+  - title: Execution Feedback
+    short-title: executionfeedback
+    plot-color: "#ff7f0e"
+    path: evaluation/execution_feedback/subjects/lunasvg/specifications/lunasvg-execpathlength-0.fan
+
+  - title: Input Spec.
+    short-title: inputspec
+    plot-color: "#1f77b4"
+    path: evaluation/execution_feedback/subjects/lunasvg/specifications/lunasvg-execpathlength-1.fan
+
+  - title: Input Spec. + Execution Feedback
+    short-title: inputspec_executionfeedback
+    plot-color: "#2ca02c"
+    path: evaluation/execution_feedback/subjects/lunasvg/specifications/lunasvg-execpathlength-2.fan
+
+metric: 'trace.ExecutionPathLength()'
+aggregation: max
+repetitions: 10
+timelimit: 3600
+population-size: 1000
+y-label: Execution Path Length
+
+output-dir: experiment_output/
