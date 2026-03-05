@@ -36,7 +36,7 @@ The experiments can be run as follows:
 
 ```bash
 docker build -f Dockerfile -t fandangogrey .
-docker run fandangogrey # Idly run docker container indefinitely
+docker run fandangogrey # Idly run docker container indefinitely, you may need to open a new shell to continue
 docker container ls # To find the docker container id
 docker exec -it <container_id_goes_here> bash # Run a shell in the docker container
 ```
