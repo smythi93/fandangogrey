@@ -45,7 +45,7 @@ RUN python -m build && pip install dist/*.whl && pip install -e ".[test]"
 RUN rm -fr /app/fcc
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 RUN wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | gpg --dearmor | tee /usr/share/keyrings/llvm-archive-keyring.gpg > /dev/null
-RUN echo "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-20 main" | tee /etc/apt/sources.list.d/llvm20.list
+RUN echo "deb http://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | tee /etc/apt/sources.list.d/llvm20.list
 RUN apt update && apt install -y --no-install-recommends \
   clang-20 clang-tools-20 clang-20-doc libclang-common-20-dev libclang-20-dev \
   libclang1-20 clang-format-20 python3-clang-20 clang-tidy-20 libllvm20 \
